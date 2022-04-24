@@ -20,7 +20,11 @@ function handle(e){
   const newdata={...data}
   newdata[e.target.id] = e.target.value;
   setData(newdata)
-  console.log(newdata)
+  console.log(newdata);
+  let items = JSON.stringify(newdata);
+  localStorage.setItem('adress_information', items);
+  let userinfo = localStorage.getItem('adress_information');
+  console.log(JSON.parse(userinfo));
 };
 
   return (
