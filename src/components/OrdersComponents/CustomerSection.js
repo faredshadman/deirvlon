@@ -1,13 +1,11 @@
 import React, {useState} from "react";
 import CustomerHeaderImage from "../../assets/ordersIcons/iCustomer.svg";
 import "../../orders.scss";
-import Axios from "axios";
 import { useTranslation } from "react-i18next";
 import Popup from "../../pages/side/Orders/ManuelOrder/Popup/Popup.js"
 const CustomerSection = () => {
   const{t} = useTranslation(["orders","orders/manorder"])
 const [buttonpop, setButtonpop] = useState(false)
-  const url = "http://kargo.kendigetir.az/public/test";
 const [data, setData] = useState({
   country: "",
   city: "",
@@ -19,28 +17,12 @@ const [data, setData] = useState({
   email: ""
 })
 function handle(e){
-const newdata={...data}
-newdata[e.target.id] = e.target.value;
-setData(newdata)
-console.log(newdata)
+  const newdata={...data}
+  newdata[e.target.id] = e.target.value;
+  setData(newdata)
+  console.log(newdata)
+};
 
-const submit = (e)=>{
-    e.preventDefault();
-    Axios.get("http://kargo.kendigetir.az/public/test", {
-    data
-    // country: data.country,
-    //   city: data.city,
-    //   state: data.state,
-    //   adress: data.adress,
-    //   zipcode: data.zipcode,
-    //   fullname: data.fullname,
-    //   phone: data.phone,
-    //   email: data.email
-    })
-    .then(res=>{
-        console.log(res.data);
-      })
-  }
   return (
     <div className="customer-section">
       <div className="customer-items">
@@ -186,5 +168,4 @@ const submit = (e)=>{
     </div>
   );
 };
-export default CustomerSection}
-
+export default CustomerSection;
