@@ -1,49 +1,48 @@
 import React, {useState} from "react";
-import axios from "axios";
 import CustomerHeaderImage from "../../assets/ordersIcons/iCustomer.svg";
 import "../../orders.scss";
 import { useTranslation } from "react-i18next";
 import Popup from "../../pages/side/Orders/ManuelOrder/Popup/Popup.js"
-const CustomerSection = () => {
+const CustomerSection = ({handle,Submit,data}) => {
   const{t} = useTranslation(["orders","orders/manorder"])
 const [buttonpop, setButtonpop] = useState(false)
-const [data, setData] = useState({
-  country: "",
-  city: "",
-  state: "", 
-  address: "",
-  zipcode: "",
-  name: "",
-  phone: "",
-  email: "",
-  userID:'1'
-});
+// const [data, setData] = useState({
+//   country: "",
+//   city: "",
+//   state: "", 
+//   address: "",
+//   zipcode: "",
+//   name: "",
+//   phone: "",
+//   email: "",
+//   userID:'1'
+// });
   console.log(Object.values(data));
-function handle(e){
-  e.preventDefault()
-  const newdata={...data}
-  newdata[e.target.id] = e.target.value;
-  setData(newdata)
-  // console.log(JSON.parse(userinfo));
-};
-function Submit(){
-  let emtyinputs=Object.values(data).slice(1).every(a=>(a && a!=="0"));
-  if (emtyinputs){
-    // e.preventDefault();\
-    let items = JSON.stringify(data);
-    localStorage.setItem('adress_information', items);
-    let userinfo = localStorage.getItem('adress_information');
-    let send = JSON.parse(userinfo);
-    axios.post('http://kargo.kendigetir.az/public/api/address/create', send)
-      .then(res => console.log(res))
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response.data);
-        }
-      })
-  }
+// function handle(e){
+//   e.preventDefault()
+//   const newdata={...data}
+//   newdata[e.target.id] = e.target.value;
+//   setData(newdata)
+//   // console.log(JSON.parse(userinfo));
+// };
+// function Submit(){
+//   let emtyinputs=Object.values(data).slice(1).every(a=>(a && a!=="0"));
+//   if (emtyinputs){
+//     // e.preventDefault();\
+//     let items = JSON.stringify(data);
+//     localStorage.setItem('adress_information', items);
+//     let userinfo = localStorage.getItem('adress_information');
+//     let send = JSON.parse(userinfo);
+//     axios.post('http://kargo.kendigetir.az/public/api/address/create', send)
+//       .then(res => console.log(res))
+//       .catch((error) => {
+//         if (error.response) {
+//           console.log(error.response.data);
+//         }
+//       })
+//   }
 
-}
+// }
 
   return (
     <div className="customer-section">

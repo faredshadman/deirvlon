@@ -1,23 +1,23 @@
-import React,{useState} from "react";
+import React from "react";
 import "../../orders.scss";
-import axios from 'axios';
 import CommonInfoImage from "../../assets/ordersIcons/commonInfo.svg";
 import { useTranslation } from "react-i18next";
-const CommonInformation = () => {
+const CommonInformation = ({com,Common}) => {
   const {t}=useTranslation(["orders","orders/manorder"])
-  const url = "";
-  const [com, setCom] = useState({
-      iosnum: "",
-      vattnum: "",
-      currency: "",
-      storage: "",
-});
-function handle(e){
-const newdata={...com}
-newdata[e.target.id] = e.target.value;
-setCom(newdata);
-console.log(newdata);
-}  
+//   const [com, setCom] = useState({
+//       iosnum: "",
+//       vattnum: "",
+//       currency: "",
+//       storage: "",
+// });
+// function Common(e){
+// const newdata={...com}
+// newdata[e.target.id] = e.target.value;
+// setCom(newdata);
+// console.log(newdata);
+// } 
+
+
   return (
     <>
       <div className="common-information">
@@ -35,7 +35,7 @@ console.log(newdata);
                     {t("orders/manorder:ios")}<span>*</span>
                   </label>{" "}
                   <br />
-                  <input onChange={(e) => handle(e)}
+                  <input onChange={(e) => Common(e)}
                       id="iosnum" value={com.iosnum}
                       placeholder="IOS number" type="text" />
                 </div>
@@ -45,7 +45,7 @@ console.log(newdata);
                     {t("orders/manorder:vatt")}<span>*</span>
                   </label>{" "}
                   <br />
-                  <input onChange={(e) => handle(e)}
+                  <input onChange={(e) => Common(e)}
                       id="vattnum" value={com.vattnum}
                       placeholder="Vatt number" type="text" />
                 </div>
@@ -54,7 +54,7 @@ console.log(newdata);
                     {t("orders/manorder:currency")}<span>*</span>
                   </label>{" "}
                   <br />
-                  <input onChange={(e) => handle(e)}
+                  <input onChange={(e) => Common(e)}
                       id="currency" value={com.currency} 
                       type="text" placeholder="USD" />
                 </div>
@@ -63,7 +63,7 @@ console.log(newdata);
                     {t("orders/manorder:tobestorage")}<span>*</span>
                   </label>{" "}
                   <br />
-                  <select onChange={(e) => handle(e)}
+                  <select onChange={(e) => Common(e)}
                       id="storage" value={com.storage}
                       placeholder="Storage">
                     <option>Select something</option>
