@@ -10,7 +10,7 @@ import ShipmentDefination from "../../../../components/OrdersComponents/Shipment
 import TotalPriceOrder from "../../../../components/OrdersComponents/TotalPriceOrder";
 import "../../../../orders.scss";
 const ManuelOrder = () => {
-const [data, setData] = useState({
+const [data, setData] = useState([{
   country: "",
   city: "",
   state: "", 
@@ -20,17 +20,24 @@ const [data, setData] = useState({
   phone: "",
   email: "",
   userID:'1'
-});
-const [com, setCom] = useState({
+},
+{
   iosnum: "",
   vattnum: "",
   currency: "",
   storage: "",
-});
+}
+]);
+// const [com, setCom] = useState({
+//   iosnum: "",
+//   vattnum: "",
+//   currency: "",
+//   storage: "",
+// });
 function Common(e){
-const newdata={...com}
+const newdata={...data}
 newdata[e.target.id] = e.target.value;
-setCom(newdata);
+setData(newdata);
 console.log(newdata);
 }
 function handle(e){
@@ -76,7 +83,7 @@ function Submit(){
     <>
       <CustomerSection data={data} handle={handle} Submit={Submit} />
       {/* <CommonInformation com={com} Common={Common} /> */}
-{toggle?<CommonInformation com={com} Common={Common} />:''}
+{toggle?<CommonInformation com={data} Common={Common} />:''}
 
 <OrderInformation />
       <MainPackage />
