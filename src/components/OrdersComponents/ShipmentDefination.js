@@ -1,12 +1,24 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import ShipmentDefImage from "../../assets/ordersIcons/shipmentdEFINATION.svg";
 import fedEx from "../../assets/ordersIcons/fedex.svg";
 import expres from "../../assets/ordersIcons/expres.svg";
 import tnt from "../../assets/ordersIcons/tnt.svg";
 import up from "../../assets/ordersIcons/ups.svg";
+import axios from "axios";
 import { useTranslation } from "react-i18next";
 const ShipmentDefination = ({ shipment }) => {
   const {t}= useTranslation(["orders","orders/manorder"])
+      const [toggle, setToggle] = useState([])
+
+    useEffect(() => {
+        axios.get("http://kargo.kendigetir.az/public/api/manuel-order")
+            .then(res => {
+                setToggle(res.data)
+            })
+            .then(res=>console.log(res))
+
+    }, [])
+  
   return (
     <div className="shipment-definition">
       {shipment && (
@@ -21,6 +33,8 @@ const ShipmentDefination = ({ shipment }) => {
             <div className="select-cargo-head">
               <h4>{t("orders/manorder:cargo")}</h4>
             </div>
+
+            
             <div className="select-cargo-items">
               <div className="select-cargo-item">
                 <div className="cargo-item-content">

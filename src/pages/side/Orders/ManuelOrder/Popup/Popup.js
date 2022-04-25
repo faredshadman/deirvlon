@@ -1,7 +1,12 @@
 import React from 'react'
 import '../Popup/Popup.css'
+import axios from 'axios';
 import AdressIcon from "../../../../../assets/Popupicons/adressbook.svg"
 function Popup(props) {
+    
+
+
+
   return ( props.trigger) ? (
     <div className='popup'>
         <div className="popup-inner">
