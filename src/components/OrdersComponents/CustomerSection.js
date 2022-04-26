@@ -17,7 +17,6 @@ const [buttonpop, setButtonpop] = useState(false)
 //   email: "",
 //   userID:'1'
 // });
-  console.log(Object.values(data));
 // function handle(e){
 //   e.preventDefault()
 //   const newdata={...data}

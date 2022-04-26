@@ -10,7 +10,7 @@ import ShipmentDefination from "../../../../components/OrdersComponents/Shipment
 import TotalPriceOrder from "../../../../components/OrdersComponents/TotalPriceOrder";
 import "../../../../orders.scss";
 const ManuelOrder = () => {
-const [data, setData] = useState([{
+const [data, setData] = useState({
   country: "",
   city: "",
   state: "", 
@@ -20,33 +20,29 @@ const [data, setData] = useState([{
   phone: "",
   email: "",
   userID:'1'
-},
-{
+}
+);
+const [com, setCom] = useState({
   iosnum: "",
   vattnum: "",
   currency: "",
   storage: "",
-}
-]);
-// const [com, setCom] = useState({
-//   iosnum: "",
-//   vattnum: "",
-//   currency: "",
-//   storage: "",
-// });
+});
+  function handle(e) {
+    e.preventDefault()
+    const newdata = { ...data }
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+    console.log(newdata);
+    // console.log(JSON.parse(userinfo));
+  };
+
 function Common(e){
-const newdata={...data}
+const newdata={...com}
 newdata[e.target.id] = e.target.value;
-setData(newdata);
+setCom(newdata);
 console.log(newdata);
 }
-function handle(e){
-  e.preventDefault()
-  const newdata={...data}
-  newdata[e.target.id] = e.target.value;
-  setData(newdata);
-  // console.log(JSON.parse(userinfo));
-};
 const[toggle,setToggle]=useState(false);
 
 function Submit(){
@@ -69,9 +65,6 @@ function Submit(){
     
 
   }
-
-
-
 }
 
 
@@ -83,7 +76,7 @@ function Submit(){
     <>
       <CustomerSection data={data} handle={handle} Submit={Submit} />
       {/* <CommonInformation com={com} Common={Common} /> */}
-{toggle?<CommonInformation com={data} Common={Common} />:''}
+{toggle?<CommonInformation com={com} Common={Common} />:''}
 
 <OrderInformation />
       <MainPackage />
