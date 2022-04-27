@@ -14,24 +14,17 @@ import Commoninfo from './Jsons/Commoninfo.json';
 const ManuelOrder = () => {
     const [data, setData] = useState(Customerinfo);
     const [com, setCom] = useState(Commoninfo);
-  // let everydata = data.map((a) => a);
-  // let data_1 = Object.keys(everydata[0]).map(a => a);
-  // let data_2 = Object.keys(everydata[1]).map(a => a);
-  // console.log(data_1);
-  // console.log(data_2);
+
   let emtyinputs = Object.values(data).slice(0).every(a => (a && a !== "0"));
   let emtycommon = Object.values(com).slice(0).every(a => (a && a !== "0"));
   console.log(emtyinputs);
   console.log(emtycommon);
-
-  const [two, setTwo] = useState(false);
   if(emtyinputs){
   let items = JSON.stringify(data);
   localStorage.setItem('adress_information', items);
   let userinfo = localStorage.getItem('adress_information');
   let send = JSON.parse(userinfo);
 }
-  const [three, setThree] = useState(false);
   if (emtycommon){
     let items = JSON.stringify(com);
     localStorage.setItem('common_information', items);
@@ -39,13 +32,6 @@ const ManuelOrder = () => {
     let send = JSON.parse(userinfo);
     
 }
-  // useEffect(() => {
-  //   if (emtyinputs){
-  //     setToggle(!toggle);
-  //   }
-      
-    
-  // }, []);
   function handle(e) {
     e.preventDefault()
     const newdata = { ...data }
@@ -86,10 +72,8 @@ console.log(newdata);
   return (
     <>
       <CustomerSection data={data} handle={handle} />
-      <CommonInformation com={com} Common={Common} />
-      {emtycommon ? <OrderInformation />:""}
-      {/* {three&&two && (<OrderInformation />)}       */}
-{/* <OrderInformation /> */}
+      {emtyinputs ? <CommonInformation com={com} Common={Common} />:""}
+      {emtyinputs&&emtycommon ? <OrderInformation />:""}
       <MainPackage />
       <ShipmentDefination shipment={true} />
       <ProductContent />
