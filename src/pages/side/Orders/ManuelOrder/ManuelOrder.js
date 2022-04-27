@@ -24,14 +24,14 @@ const ManuelOrder = () => {
   console.log(emtyinputs);
   console.log(emtycommon);
 
-  const [two, setTwo] = useState(emtyinputs ? true:false);
+  const [two, setTwo] = useState(false);
   if(emtyinputs){
   let items = JSON.stringify(data);
   localStorage.setItem('adress_information', items);
   let userinfo = localStorage.getItem('adress_information');
   let send = JSON.parse(userinfo);
 }
-  const [three, setThree] = useState(emtycommon ? true : false);
+  const [three, setThree] = useState(false);
   if (emtycommon){
     let items = JSON.stringify(com);
     localStorage.setItem('common_information', items);
@@ -83,22 +83,13 @@ console.log(newdata);
 
 //   }
 // }
-function Conditinal(){
-if(two){
-  return (<CommonInformation com={com} Common={Common} />)
-}
-else if(two&&three){
-  return (<OrderInformation />);
-}
-}
   return (
     <>
       <CustomerSection data={data} handle={handle} />
-      {/* <CommonInformation com={com} Common={Common} /> */}
-      {/* {two===true && <CommonInformation com={com} Common={Common} />}
-      {three&&two && (<OrderInformation />)}       */}
+      <CommonInformation com={com} Common={Common} />
+      {emtycommon ? <OrderInformation />:""}
+      {/* {three&&two && (<OrderInformation />)}       */}
 {/* <OrderInformation /> */}
-      {Conditinal()}
       <MainPackage />
       <ShipmentDefination shipment={true} />
       <ProductContent />
