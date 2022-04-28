@@ -8,12 +8,12 @@ import "./Lists.css";
 import OutsideClickHandler from "react-outside-click-handler";
 import Storagelists from "./Storagelists.js";
 import Localstorage from "./Productstorage.js";
-function Lists(props) {
+function Lists({ setAddList, setList }) {
   const [locallist, setLocallist] = useState(false);
   const [storList, setStorList] = useState(false);
-  return props.setList ? (
+  return setList ? (
     <div className="lists">
-      <div className="logo">
+      <div className="logo" onClick={() => setAddList(false)}>
         <img className="icons" src={Listicon} alt="" />
       </div>
       <div className="listnames">
@@ -51,7 +51,7 @@ function Lists(props) {
           }}>
           <div onClick={() => setLocallist(!locallist)} className="list_1">
             <div className="list_name">
-              <div className="list_logo">
+              <div className="list_logo" onClick={() => setAddList(!setList)}>
                 <img className="icons" src={List_3} alt="" />
               </div>
               <button>
