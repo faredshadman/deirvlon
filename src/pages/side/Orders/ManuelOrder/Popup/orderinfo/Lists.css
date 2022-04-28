@@ -6,7 +6,10 @@
     outline: none;
     list-style: none;
 }
+
 .lists{
+    display: flex;
+    flex-direction: column;
 width: 473px;
 height: 333px;
 box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
@@ -14,7 +17,8 @@ border-radius: 15px;
 position: absolute;
 background-color: #ffffff;
 z-index: 9999;
-right: 400px;
+left: 50%;
+transform: translateX(-50%);
 }
 .lists .logo{
     width: 29px;
@@ -26,10 +30,10 @@ right: 400px;
     align-items: center;
     margin: 27px 22px;
 }
-.logo .icons{
+/* .logo .icons{
     width: 12.27px;
     height: 11.15px;
-}
+} */
 .list_1, .list_name{
     display: flex;
     align-items: center;
@@ -51,11 +55,11 @@ right: 400px;
 }
 
 .listnames{
+    height: 60%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 59px;
+    padding: 0 1rem;
+    justify-content: space-between;
 }
 .list_name .list_logo{
     width: 23px;
@@ -74,4 +78,20 @@ cursor: pointer;
 }
 .list_name button h3{
     color:#405982;
+}
+@media screen and (max-width: 600px) {
+    .lists{
+        padding: 0 10px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .listnames{
+        align-items: stretch;
+
+    }
+    .list_1{
+        padding: 0.5rem 0.2rem;
+    }
+
+    
 }
